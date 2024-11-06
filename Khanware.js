@@ -247,7 +247,7 @@ function setupMenu() {
 /* Main Functions */ 
 function setupMain(){
     function spoofQuestion() {
-        const phrases = [ "🔥 Get good, get [Khan breaker](https://github.com/Niximkk/Khan breaker/)!", "🤍 Made by [@im.nix](https://e-z.bio/sounix).", "☄️ By github.com/Niximkk/Khan breaker/ " ];
+        const phrases = [ "🔥 Fazendo suas licoes aguarde.)!", "🤍 Feito por [__.joao.xzz](https://www.instagram.com/_.joao.zoadeli/).", "☄️ Da meu 5$ fila da puta " ];
         const originalFetch = window.fetch;
         window.fetch = async function (input, init) {
             let body;
@@ -426,74 +426,3 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
     setupMain();
     console.clear();
 })
-
-// Thank you to everyone who has purchased access to my cheat as of 10/28/24.
-/*
-@Thomaz015
-@grazynabazio
-@meyssaxavier
-@WESLEY.SPREDEMANN
-@carine.rech.alves
-@nazare.de.maria
-@jowsanth
-@bielzy
-@rafaeldeagostino
-@AMFDS
-@Jv010107
-@Mattheusfreitas01
-@Guilhermeoliveira2623
-@Matt010101
-@voncallis
-@Thamiris0001
-@Holmes1212
-@Martinss0000
-@zRoque
-@LaryCouto.com.br
-@IanyckFerreira
-@sales7
-@AleSobral
-@wbzz2121
-@Umunizzz
-@ViniciusMancini
-@ricardaosantista
-@marcos10pc
-@bzinxxx
-@ryanmzmartins
-@Kaleb1577
-@brunopereirabarros
-@RodrigoMartins1236751
-@guixzf
-@Leandrohenrq
-@damnntiago
-@WhoisMe777
-@Gustavopc21
-@matheus.hx2
-@WSZL
-@LeozinB2
-@Davas123
-@joaoviturino
-@orickmaxx
-@l55nar5
-@nextbyhawk
-@Bruninda019
-@GabrielRibeiroP
-@Shinjoia
-@hy7pee
-@arthurmondequedutra
-@PedrooVsp
-@zBlucker
-@vitiintavares
-@Holmes1212
-@Anthony06927
-@refinado
-@ErickMarinelli
-@pedroomelhor
-@gabrielmonteiro0053
-@Felipealexandre10
-@saantzx7
-@alvarosouzaribeiro
-@gabrielejte
-@Kevinzada
-@antonio77xs
-@marcus.floriano.oliveira
-*/
