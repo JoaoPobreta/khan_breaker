@@ -169,23 +169,23 @@ function setupMenu() {
         `;
         watermark.appendChild(dropdownMenu);
         let featuresList = [
-            [{ name: 'questionSpoof', type: 'checkbox', variable: 'features.questionSpoof', attributes: 'checked', labeled: true, label: 'Question Spoof' },
-            { name: 'videoSpoof', type: 'checkbox', variable: 'features.videoSpoof', attributes: 'checked', labeled: true, label: 'Video Spoof' },
+            [{ name: 'questionSpoof', type: 'checkbox', variable: 'features.questionSpoof', attributes: 'checked', labeled: true, label: '[+] Question spoof' },
+            { name: 'videoSpoof', type: 'checkbox', variable: 'features.videoSpoof', attributes: 'checked', labeled: true, label: '[+] Video Spoof' },
             { name: 'showAnswers', type: 'checkbox', variable: 'features.showAnswers', labeled: true, label: 'Answer Revealer' }],
-            [{ name: 'autoAnswer', type: 'checkbox', variable: 'features.autoAnswer', dependent: 'autoAnswerDelay,nextRecomendation,repeatQuestion', labeled: true, label: 'Auto Answer' },
-            { name: 'repeatQuestion', className: 'repeatQuestion', type: 'checkbox', variable: 'features.repeatQuestion', attributes: 'style="display:none;"', labeled: true, label: 'Repeat Question' },
-            { name: 'nextRecomendation', className: 'nextRecomendation', type: 'checkbox', variable: 'features.nextRecomendation', attributes: 'style="display:none;"', labeled: true, label: 'Recomendations' },
+            [{ name: 'autoAnswer', type: 'checkbox', variable: 'features.autoAnswer', dependent: 'autoAnswerDelay,nextRecomendation,repeatQuestion', labeled: true, label: '[+] Fazer automaticamente' },
+            { name: 'repeatQuestion', className: 'repeatQuestion', type: 'checkbox', variable: 'features.repeatQuestion', attributes: 'style="display:none;"', labeled: true, label: '[+] Repetir questao' },
+            { name: 'nextRecomendation', className: 'nextRecomendation', type: 'checkbox', variable: 'features.nextRecomendation', attributes: 'style="display:none;"', labeled: true, label: '[+] Recomendacao auto' },
             { name: 'autoAnswerDelay', className: 'autoAnswerDelay', type: 'range', variable: 'features.autoAnswerDelay', attributes: 'style="display:none;" min="1" max="3" value="1"', labeled: false }],
-            [{ name: 'minuteFarm', type: 'checkbox', variable: 'features.minuteFarmer', labeled: true, label: 'Minute Farmer' },
-            { name: 'customBanner', type: 'checkbox', variable: 'features.customBanner', labeled: true, label: 'Custom Banner' },
-            { name: 'rgbLogo', type: 'checkbox', variable: 'features.rgbLogo', labeled: true, label: 'RGB Logo' }],
-            [{ name: 'darkMode', type: 'checkbox', variable: 'features.darkMode', attributes: 'checked', labeled: true, label: 'Dark Mode' },
-            { name: 'onekoJs', type: 'checkbox', variable: 'features.onekoJs', labeled: true, label: 'onekoJs' }]
+            [{ name: 'minuteFarm', type: 'checkbox', variable: 'features.minuteFarmer', labeled: true, label: '[+] Farmar tempo' },
+            { name: 'customBanner', type: 'checkbox', variable: 'features.customBanner', labeled: true, label: '[+] Banner' },
+            { name: 'rgbLogo', type: 'checkbox', variable: 'features.rgbLogo', labeled: true, label: '[+] RGB Logo' }],
+            [{ name: 'darkMode', type: 'checkbox', variable: 'features.darkMode', attributes: 'checked', labeled: true, label: '[+] Dark Mode' },
+            { name: 'onekoJs', type: 'checkbox', variable: 'features.onekoJs', labeled: true, label: '[+] Seguidor de mouse' }]
         ]
         if (!device.apple) {
             featuresList.push(
-                [{ name: 'Custom Username', type: 'nonInput' }, { name: 'customName', type: 'text', variable: 'featureConfigs.customUsername', attributes: 'autocomplete="off"' }],
-                [{ name: 'Custom pfp', type: 'nonInput' }, { name: 'customPfp', type: 'text', variable: 'featureConfigs.customPfp', attributes: 'autocomplete="off"' }]
+                [{ name: '[+] Nome customizado', type: 'nonInput' }, { name: 'customName', type: 'text', variable: 'featureConfigs.customUsername', attributes: 'autocomplete="off"' }],
+                [{ name: '[+] Mudar foto de perfil', type: 'nonInput' }, { name: 'customPfp', type: 'text', variable: 'featureConfigs.customPfp', attributes: 'autocomplete="off"' }]
             );
         }
         featuresList.push([{ name: `${user.username} - UID: ${user.UID}`, type: 'nonInput', attributes: 'style="font-size:10px;"padding-left:5px;' }]);
@@ -214,7 +214,7 @@ function setupMenu() {
         (function calcFPS() { if (++frameCount && performance.now() - lastFrameTime >= 1000) { fps = Math.round(frameCount * 1000 / (performance.now() - lastFrameTime)); frameCount = 0; lastFrameTime = performance.now(); } requestAnimationFrame(calcFPS); })();
         const getTime = () => new Date().toLocaleTimeString();
         const update = async () => statsPanel.innerHTML = `
-            <span style="text-shadow: -1px 0.5px 0 #p, -2px 0px 0 #2f672e;">KW</span>
+            <span style="text-shadow: -1px 0.5px 0 #p, -2px 0px 0 #2f672e;">NAZI</span>
             <span style="margin: 0 8px;">|</span><span>${fps}fps</span>
             <span style="margin: 0 8px;">|</span><span>${await getPing()}ms</span>
             <span style="margin: 0 8px;">|</span><span>${getTime()}</span>
@@ -426,74 +426,3 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
     setupMain();
     console.clear();
 })
-
-// Thank you to everyone who has purchased access to my cheat as of 10/28/24.
-/*
-@Thomaz015
-@grazynabazio
-@meyssaxavier
-@WESLEY.SPREDEMANN
-@carine.rech.alves
-@nazare.de.maria
-@jowsanth
-@bielzy
-@rafaeldeagostino
-@AMFDS
-@Jv010107
-@Mattheusfreitas01
-@Guilhermeoliveira2623
-@Matt010101
-@voncallis
-@Thamiris0001
-@Holmes1212
-@Martinss0000
-@zRoque
-@LaryCouto.com.br
-@IanyckFerreira
-@sales7
-@AleSobral
-@wbzz2121
-@Umunizzz
-@ViniciusMancini
-@ricardaosantista
-@marcos10pc
-@bzinxxx
-@ryanmzmartins
-@Kaleb1577
-@brunopereirabarros
-@RodrigoMartins1236751
-@guixzf
-@Leandrohenrq
-@damnntiago
-@WhoisMe777
-@Gustavopc21
-@matheus.hx2
-@WSZL
-@LeozinB2
-@Davas123
-@joaoviturino
-@orickmaxx
-@l55nar5
-@nextbyhawk
-@Bruninda019
-@GabrielRibeiroP
-@Shinjoia
-@hy7pee
-@arthurmondequedutra
-@PedrooVsp
-@zBlucker
-@vitiintavares
-@Holmes1212
-@Anthony06927
-@refinado
-@ErickMarinelli
-@pedroomelhor
-@gabrielmonteiro0053
-@Felipealexandre10
-@saantzx7
-@alvarosouzaribeiro
-@gabrielejte
-@Kevinzada
-@antonio77xs
-@marcus.floriano.oliveira
-*/
