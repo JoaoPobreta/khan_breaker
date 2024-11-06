@@ -159,12 +159,12 @@ function setupMenu() {
         });
         dropdownMenu.innerHTML = `
             <style>
-                input[type="checkbox"] {appearance: none; width: 15px; height: 15px; background-color: #3a3a3b;
+                input[type="checkbox"] {appearance: none; width: 15px; height: 15px; background-color: #23ad58;
                 border: 1px solid #acacac; border-radius: 3px; margin-right: 5px; cursor: pointer;}
                 input[type="checkbox"]:checked {background-color: #23ad58; border-color: #720fb8;}
                 input[type="text"], input[type="number"], input[type="range"] {width: calc(100% - 10px); border: 1px solid #343434; 
                 color: white; accent-color: #23ad58; background-color: #23ad58; padding: 3px; border-radius: 3px; background: none;}
-                label {display: flex; align-items: center; color: #3a3a3b; padding-top: 3px;}
+                label {display: flex; align-items: center; color: #23ad58; padding-top: 3px;}
             </style>
         `;
         watermark.appendChild(dropdownMenu);
@@ -214,7 +214,7 @@ function setupMenu() {
         (function calcFPS() { if (++frameCount && performance.now() - lastFrameTime >= 1000) { fps = Math.round(frameCount * 1000 / (performance.now() - lastFrameTime)); frameCount = 0; lastFrameTime = performance.now(); } requestAnimationFrame(calcFPS); })();
         const getTime = () => new Date().toLocaleTimeString();
         const update = async () => statsPanel.innerHTML = `
-            <span style="text-shadow: -1px 0.5px 0 #p, -2px 0px 0 #2f672e;">KW</span>
+            <span style="text-shadow: -1px 0.5px 0 #p, -2px 0px 0 #2f672e;">Khan Breaker</span>
             <span style="margin: 0 8px;">|</span><span>${fps}fps</span>
             <span style="margin: 0 8px;">|</span><span>${await getPing()}ms</span>
             <span style="margin: 0 8px;">|</span><span>${getTime()}</span>
