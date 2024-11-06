@@ -158,14 +158,14 @@ function setupMenu() {
             userSelect: 'none', transition: 'transform 0.3s ease', backdropFilter: 'blur(2px)', WebkitBackdropFilter: 'blur(2px)'
         });
         dropdownMenu.innerHTML = `
-        <style>
-        input[type="checkbox"] {appearance: none; width: 15px; height: 15px; background-color: #3a3a3b;
-        border: 1px solid #acacac; border-radius: 3px; margin-right: 5px; cursor: pointer;}
-        input[type="checkbox"]:checked {background-color: #540b8a; border-color: #720fb8;}
-        input[type="text"], input[type="number"], input[type="range"] {width: calc(100% - 10px); border: 1px solid #343434; 
-        color: white; accent-color: #540b8a; background-color: #540b8a; padding: 3px; border-radius: 3px; background: none;}
-        label {display: flex; align-items: center; color: #3a3a3b; padding-top: 3px;}
-        </style>
+            <style>
+                input[type="checkbox"] {appearance: none; width: 15px; height: 15px; background-color: #3a3a3b;
+                border: 1px solid #acacac; border-radius: 3px; margin-right: 5px; cursor: pointer;}
+                input[type="checkbox"]:checked {background-color: #540b8a; border-color: #720fb8;}
+                input[type="text"], input[type="number"], input[type="range"] {width: calc(100% - 10px); border: 1px solid #343434; 
+                color: white; accent-color: #540b8a; background-color: #540b8a; padding: 3px; border-radius: 3px; background: none;}
+                label {display: flex; align-items: center; color: #3a3a3b; padding-top: 3px;}
+            </style>
         `;
         watermark.appendChild(dropdownMenu);
         let featuresList = [
@@ -416,7 +416,7 @@ loadScript('https://cdn.jsdelivr.net/npm/darkreader@4.9.92/darkreader.min.js', '
 loadCss('https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css', 'toastifyCss');
 loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
 .then(async () => {
-    sendToast("⚔   Khan breaker inciado com sucesso.");
+    sendToast("🎯   Khan breaker inciado com sucesso.");
     playAudio('https://r2.e-z.host/4d0a0bea-60f8-44d6-9e74-3032a64a9f32/gcelzszy.wav');
     await delay(500);
     sendToast(`⭐ Bem vindo(a) ! `);
