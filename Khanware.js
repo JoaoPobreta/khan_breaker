@@ -48,7 +48,7 @@ console.log(Object.defineProperties(new Error, { toString: {value() {(new Error)
 
 /* Misc Styles */
 // Most of these will eventually stop working, as my proxy will become inactive.
-document.head.appendChild(Object.assign(document.createElement("style"),{innerHTML:"@font-face{font-family:'MuseoSans';src:url('https://proxy.khanware.space/r2.e-z.host/4d0a0bea-60f8-44d6-9e74-3032a64a9f32/ynddewua.ttf')format('truetype')}" }));
+document.head.appendChild(Object.assign(document.createElement("style"),{innerHTML:"@font-face{font-family:'MuseoSans';src:url('https://proxy.Khan breaker.space/r2.e-z.host/4d0a0bea-60f8-44d6-9e74-3032a64a9f32/ynddewua.ttf')format('truetype')}" }));
 document.head.appendChild(Object.assign(document.createElement('style'),{innerHTML:"::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: #f1f1f1; } ::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; } ::-webkit-scrollbar-thumb:hover { background: #555; }"}));
 document.querySelector("link[rel~='icon']").href = 'https://r2.e-z.host/4d0a0bea-60f8-44d6-9e74-3032a64a9f32/ukh0rq22.png';
 
@@ -66,7 +66,7 @@ const findAndClickByClass = className => { const element = document.querySelecto
 
 function sendToast(text, duration=5000, gravity='bottom') { Toastify({ text: text, duration: duration, gravity: gravity, position: "center", stopOnFocus: true, style: { background: "#000000" } }).showToast(); };
 
-async function showSplashScreen() { splashScreen.style.cssText = "position:fixed;top:0;left:0;width:100%;height:100%;background-color:#000;display:flex;align-items:center;justify-content:center;z-index:9999;opacity:0;transition:opacity 0.5s ease;user-select:none;color:white;font-family:MuseoSans,sans-serif;font-size:30px;text-align:center;"; splashScreen.innerHTML = '<span style="color:white;">KHANWARE</span><span style="color:#72ff72;">.SPACE</span>'; document.body.appendChild(splashScreen); setTimeout(() => splashScreen.style.opacity = '1', 10);};
+async function showSplashScreen() { splashScreen.style.cssText = "position:fixed;top:0;left:0;width:100%;height:100%;background-color:#000;display:flex;align-items:center;justify-content:center;z-index:9999;opacity:0;transition:opacity 0.5s ease;user-select:none;color:white;font-family:MuseoSans,sans-serif;font-size:30px;text-align:center;"; splashScreen.innerHTML = '<span style="color:white;">Khan breaker</span><span style="color:#72ff72;">.SPACE</span>'; document.body.appendChild(splashScreen); setTimeout(() => splashScreen.style.opacity = '1', 10);};
 async function hideSplashScreen() { splashScreen.style.opacity = '0'; setTimeout(() => splashScreen.remove(), 1000); };
 
 async function loadScript(url, label) { return fetch(url).then(response => response.text()).then(script => { loadedPlugins.push(label); eval(script); }); }
@@ -214,7 +214,7 @@ function setupMenu() {
         (function calcFPS() { if (++frameCount && performance.now() - lastFrameTime >= 1000) { fps = Math.round(frameCount * 1000 / (performance.now() - lastFrameTime)); frameCount = 0; lastFrameTime = performance.now(); } requestAnimationFrame(calcFPS); })();
         const getTime = () => new Date().toLocaleTimeString();
         const update = async () => statsPanel.innerHTML = `
-            <span style="text-shadow: -1px 0.5px 0 #p, -2px 0px 0 #2f672e;">NAZI</span>
+            <span style="text-shadow: -1px 0.5px 0 #p, -2px 0px 0 #2f672e;">NAZI KHAN</span>
             <span style="margin: 0 8px;">|</span><span>${fps}fps</span>
             <span style="margin: 0 8px;">|</span><span>${await getPing()}ms</span>
             <span style="margin: 0 8px;">|</span><span>${getTime()}</span>
@@ -247,7 +247,7 @@ function setupMenu() {
 /* Main Functions */ 
 function setupMain(){
     function spoofQuestion() {
-        const phrases = [ "🔥 Get good, get [Khanware](https://github.com/Niximkk/khanware/)!", "🤍 Made by [@im.nix](https://e-z.bio/sounix).", "☄️ By github.com/Niximkk/khanware/ " ];
+        const phrases = [ "🔥 Get good, get [Khan breaker](https://github.com/Niximkk/Khan breaker/)!", "🤍 Made by [@im.nix](https://e-z.bio/sounix).", "☄️ By github.com/Niximkk/Khan breaker/ " ];
         const originalFetch = window.fetch;
         window.fetch = async function (input, init) {
             let body;
@@ -372,7 +372,7 @@ function setupMain(){
         })
     }
     function changeBannerText() {
-        const phrases = [ "[🌿] Non Skeetless dude.", "[🌿] Khanware on top.", "[🌿] Nix said hello!", "[🌿] God i wish i had Khanware.", "[🌿] Get good get Khanware!", "[🌿] the old khanware.space" ];
+        const phrases = [ "[☯] Tudo 3 passa nada", "[🚩] Salve petista.", "[🚩] Hitler mandou um OI do inferno KKK", "[🌿] Henrique da o cu pro kevin", "[🌿] Obrigado por usar o khan breaker !", "[🌿] Feito por @__.joao.xzz" ];
         setInterval(() => { 
             const greeting = document.querySelector('.stp-animated-banner h2');
             if (greeting&&features.customBanner) greeting.textContent = phrases[Math.floor(Math.random() * phrases.length)];
@@ -398,7 +398,7 @@ function setupMain(){
 }
 
 /* Inject */
-if (!/^https?:\/\/pt\.khanacademy\.org/.test(window.location.href)) { alert("❌ Khanware Failed to Injected!\n\nVocê precisa executar o Khanware no site do Khan Academy! (https://pt.khanacademy.org/)"); window.location.href = "https://pt.khanacademy.org/";};
+if (!/^https?:\/\/pt\.khanacademy\.org/.test(window.location.href)) { alert("❌ Khan breaker Failed to Injected!\n\nVocê precisa executar o Khan breaker no site do Khan Academy! (https://pt.khanacademy.org/)"); window.location.href = "https://pt.khanacademy.org/";};
 
 showSplashScreen();
 
@@ -416,13 +416,84 @@ loadScript('https://cdn.jsdelivr.net/npm/darkreader@4.9.92/darkreader.min.js', '
 loadCss('https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css', 'toastifyCss');
 loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
 .then(async () => {
-    sendToast("🌿 Khanware injetado com sucesso!");
+    sendToast("🔞 Khan para nazistas injetado !");
     playAudio('https://r2.e-z.host/4d0a0bea-60f8-44d6-9e74-3032a64a9f32/gcelzszy.wav');
     await delay(500);
-    sendToast(`⭐ Bem vindo(a) de volta: ${user.nickname}`);
-    loadedPlugins.forEach(plugin => sendToast(`🪝 ${plugin} Loaded!`, 2000, 'top') );
+    sendToast(`⭐ Bem vindo(a) de volta estrupador !`);
+    loadedPlugins.forEach(plugin => sendToast(`🚧 ${plugin} Loaded!`, 2000, 'top') );
     hideSplashScreen();
     setupMenu();
     setupMain();
     console.clear();
 })
+
+// Thank you to everyone who has purchased access to my cheat as of 10/28/24.
+/*
+@Thomaz015
+@grazynabazio
+@meyssaxavier
+@WESLEY.SPREDEMANN
+@carine.rech.alves
+@nazare.de.maria
+@jowsanth
+@bielzy
+@rafaeldeagostino
+@AMFDS
+@Jv010107
+@Mattheusfreitas01
+@Guilhermeoliveira2623
+@Matt010101
+@voncallis
+@Thamiris0001
+@Holmes1212
+@Martinss0000
+@zRoque
+@LaryCouto.com.br
+@IanyckFerreira
+@sales7
+@AleSobral
+@wbzz2121
+@Umunizzz
+@ViniciusMancini
+@ricardaosantista
+@marcos10pc
+@bzinxxx
+@ryanmzmartins
+@Kaleb1577
+@brunopereirabarros
+@RodrigoMartins1236751
+@guixzf
+@Leandrohenrq
+@damnntiago
+@WhoisMe777
+@Gustavopc21
+@matheus.hx2
+@WSZL
+@LeozinB2
+@Davas123
+@joaoviturino
+@orickmaxx
+@l55nar5
+@nextbyhawk
+@Bruninda019
+@GabrielRibeiroP
+@Shinjoia
+@hy7pee
+@arthurmondequedutra
+@PedrooVsp
+@zBlucker
+@vitiintavares
+@Holmes1212
+@Anthony06927
+@refinado
+@ErickMarinelli
+@pedroomelhor
+@gabrielmonteiro0053
+@Felipealexandre10
+@saantzx7
+@alvarosouzaribeiro
+@gabrielejte
+@Kevinzada
+@antonio77xs
+@marcus.floriano.oliveira
+*/
