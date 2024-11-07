@@ -426,22 +426,43 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
     setupMain();
     console.clear();
 })
-// Função para exibir o painel de login
+// Função para exibir o painel de login estilizado
 function showLoginScreen() {
     // Cria a estrutura do painel de login
     const loginScreen = document.createElement('div');
     loginScreen.style.cssText = `
         position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-        background-color: rgba(0, 0, 0, 0.8); display: flex; flex-direction: column;
-        align-items: center; justify-content: center; color: white; z-index: 9999;
-        font-family: sans-serif;
+        background-color: rgba(0, 0, 0, 0.8); display: flex; align-items: center; 
+        justify-content: center; z-index: 9999;
     `;
+    
+    // Estrutura e estilos do painel centralizado
     loginScreen.innerHTML = `
-        <h2 style="margin-bottom: 20px;">Painel de Login</h2>
-        <input id="username" type="text" placeholder="Usuário" style="margin-bottom: 10px; padding: 8px; font-size: 16px;">
-        <input id="password" type="password" placeholder="Senha" style="margin-bottom: 20px; padding: 8px; font-size: 16px;">
-        <button id="loginButton" style="padding: 8px 20px; font-size: 16px; cursor: pointer;">Entrar</button>
-        <p id="loginError" style="color: red; display: none; margin-top: 10px;">Usuário ou senha incorretos</p>
+        <div style="
+            background-color: rgba(0, 0, 0, 0.9); padding: 30px; border: 1px solid red; 
+            border-radius: 8px; width: 300px; text-align: center; color: white;
+            font-family: sans-serif;
+        ">
+            <h2 style="margin-bottom: 20px; font-weight: bold; color: white;">Login</h2>
+            <label style="display: block; text-align: left; margin-bottom: 5px;">Usuário:</label>
+            <input id="username" type="text" placeholder="Digite seu usuário" style="
+                width: 100%; padding: 10px; margin-bottom: 15px; font-size: 14px; 
+                background-color: rgba(0, 0, 0, 0.7); color: white; border: 1px solid red; 
+                border-radius: 5px; outline: none;
+            ">
+            <label style="display: block; text-align: left; margin-bottom: 5px;">Senha:</label>
+            <input id="password" type="password" placeholder="Digite sua senha" style="
+                width: 100%; padding: 10px; margin-bottom: 20px; font-size: 14px; 
+                background-color: rgba(0, 0, 0, 0.7); color: white; border: 1px solid red; 
+                border-radius: 5px; outline: none;
+            ">
+            <button id="loginButton" style="
+                width: 100%; padding: 10px; font-size: 16px; font-weight: bold; 
+                background-color: red; color: white; border: none; 
+                border-radius: 5px; cursor: pointer;
+            ">Entrar</button>
+            <p id="loginError" style="color: red; display: none; margin-top: 10px;">Usuário ou senha incorretos</p>
+        </div>
     `;
     document.body.appendChild(loginScreen);
 
