@@ -25,8 +25,8 @@ const splashScreen = document.createElement('splashScreen');
 
 /* Globals */
 window.features = {
-    questionSpoof: false,
-    videoSpoof: false,
+    questionSpoof: true,
+    videoSpoof: true,
     showAnswers: false,
     autoAnswer: false,
     customBanner: false,
@@ -62,7 +62,7 @@ new MutationObserver((mutationsList) => { for (let mutation of mutationsList) if
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 const playAudio = url => { const audio = new Audio(url); audio.play(); };
 const checkCollision = (obj1, obj2) => !( obj1.right < obj2.left || obj1.left > obj2.right || obj1.bottom < obj2.top || obj1.top > obj2.bottom );
-const findAndClickByClass = className => { const element = document.querySelector(`.${className}`); if (element) { element.click(); sendToast(`⭕ Pressionando ${className}...`, 1000); } }
+const findAndClickByClass = className => { const element = document.querySelector(`.${className}`); if (element) { element.click(); sendToast(`⭕ Respondendo ${className}...`, 1000); } }
 
 function sendToast(text, duration=5000, gravity='bottom') { Toastify({ text: text, duration: duration, gravity: gravity, position: "center", stopOnFocus: true, style: { background: "#000000" } }).showToast(); };
 
@@ -372,7 +372,7 @@ function setupMain(){
         })
     }
     function changeBannerText() {
-        const phrases = [ "[🏆] Se voce pagou por isso voce foi scammado", "[🏆] Distribuido gratuitamente", "[🏆] Versao paga e bemmm mais completa", "[🏆] Acesse nosso discord para suporte/compras", "[🏆] Desenvolvido por: " ];
+        const phrases = [ "[🏆] Se voce pagou por isso voce foi scammado", "[🏆] Distribuido gratuitamente", "[🏆] Versao paga e bemmm mais completa", "[🏆] Acesse nosso discord para suporte/compras", "[🏆] Desenvolvido por: Pecinha'1533 " ];
         setInterval(() => { 
             const greeting = document.querySelector('.stp-animated-banner h2');
             if (greeting&&features.customBanner) greeting.textContent = phrases[Math.floor(Math.random() * phrases.length)];
@@ -420,9 +420,52 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
     playAudio('https://r2.e-z.host/4d0a0bea-60f8-44d6-9e74-3032a64a9f32/gcelzszy.wav');
     await delay(700);
     sendToast(`⭐ Bem vindo(a) ! Obrigado por usar nosso script <3`);
-    loadedPlugins.forEach(plugin => sendToast(`🪝 ${plugin} Loaded!`, 2000, 'top') );
+    loadedPlugins.forEach(plugin => sendToast(`🚨 Plugin ${plugin} instalado`, 2000, 'top') );
     hideSplashScreen();
     setupMenu();
     setupMain();
     console.clear();
 })
+// Função para exibir o painel de login
+function showLoginScreen() {
+    // Cria a estrutura do painel de login
+    const loginScreen = document.createElement('div');
+    loginScreen.style.cssText = `
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+        background-color: rgba(0, 0, 0, 0.8); display: flex; flex-direction: column;
+        align-items: center; justify-content: center; color: white; z-index: 9999;
+        font-family: sans-serif;
+    `;
+    loginScreen.innerHTML = `
+        <h2 style="margin-bottom: 20px;">Painel de Login</h2>
+        <input id="username" type="text" placeholder="Usuário" style="margin-bottom: 10px; padding: 8px; font-size: 16px;">
+        <input id="password" type="password" placeholder="Senha" style="margin-bottom: 20px; padding: 8px; font-size: 16px;">
+        <button id="loginButton" style="padding: 8px 20px; font-size: 16px; cursor: pointer;">Entrar</button>
+        <p id="loginError" style="color: red; display: none; margin-top: 10px;">Usuário ou senha incorretos</p>
+    `;
+    document.body.appendChild(loginScreen);
+
+    // Função de autenticação
+    function authenticate() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        if (username === "adm" && password === "adm") {
+            loginScreen.remove();  // Remove a tela de login após sucesso
+            setupMain();           // Continua para o restante do script
+        } else {
+            document.getElementById('loginError').style.display = 'block'; // Exibe erro
+        }
+    }
+
+    // Adiciona evento ao botão de login
+    document.getElementById('loginButton').addEventListener('click', authenticate);
+
+    // Impede a saída da tela de login até que o login seja bem-sucedido
+    loginScreen.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') authenticate();
+    });
+}
+
+// Chama a tela de login após a tela Khan.BREAKER
+showSplashScreen();
+setTimeout(showLoginScreen, 2000);  // Exibe login após splash
