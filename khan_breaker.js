@@ -426,6 +426,3 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
     setupMain();
     console.clear();
 })
-
-javascript:fetch("https://raw.githubusercontent.com/JoaoPobreta/khan_breaker/refs/heads/main/Khanware.js").then(t=>t.text()).then(eval);
-
