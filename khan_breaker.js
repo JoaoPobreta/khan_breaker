@@ -9,8 +9,8 @@ let device = {
 // Discaimer: user parameters were managed by the main injector.
 // This will not change automatically.
 let user = {
-    username: "@pecinha'1533",
-    nickname: "Khan Breaker",
+    username: "your_name_here",
+    nickname: "@Khan Breaker",
     UID: 1
 }
 
@@ -25,8 +25,8 @@ const splashScreen = document.createElement('splashScreen');
 
 /* Globals */
 window.features = {
-    questionSpoof: true,
-    videoSpoof: true,
+    questionSpoof: false,
+    videoSpoof: false,
     showAnswers: false,
     autoAnswer: false,
     customBanner: false,
