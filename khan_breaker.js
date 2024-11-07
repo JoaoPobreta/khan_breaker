@@ -426,6 +426,7 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
     setupMain();
     console.clear();
 })
+
 // Função para exibir o painel de login estilizado
 function showLoginScreen() {
     // Cria a estrutura do painel de login
@@ -461,7 +462,6 @@ function showLoginScreen() {
                 background-color: red; color: white; border: none; 
                 border-radius: 5px; cursor: pointer;
             ">Entrar</button>
-            <p id="loginError" style="color: red; display: none; margin-top: 10px;">Usuário ou senha incorretos</p>
         </div>
     `;
     document.body.appendChild(loginScreen);
@@ -470,12 +470,45 @@ function showLoginScreen() {
     function authenticate() {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-        if (username === "adm" && password === "adm") {
+        if (username === "khan" && password === "breaker") {
             loginScreen.remove();  // Remove a tela de login após sucesso
             setupMain();           // Continua para o restante do script
         } else {
-            document.getElementById('loginError').style.display = 'block'; // Exibe erro
+            showErrorNotification(); // Exibe notificações de erro
         }
+    }
+
+    // Exibe notificações de erro de login
+    function showErrorNotification() {
+        // Notificação de erro de login
+        Toastify({
+            text: "Usuário ou senha incorretos.",
+            duration: 3000,
+            gravity: "top",
+            position: "center",
+            style: {
+                background: "red",
+            },
+        }).showToast();
+
+        // Notificação com link para o Discord
+        setTimeout(() => {
+            Toastify({
+                text: "Não tem login? Pegue um no nosso Discord: Khan Breaker",
+                duration: 5000,
+                gravity: "top",
+                position: "center",
+                style: {
+                    background: "black",
+                    color: "white",
+                    cursor: "pointer",
+                    border: "1px solid red",
+                },
+                onClick: function() {
+                    window.open("https://discord.gg/rRkm3y9hb5", "_blank");
+                }
+            }).showToast();
+        }, 3500); // Exibe a segunda notificação logo após a primeira
     }
 
     // Adiciona evento ao botão de login
