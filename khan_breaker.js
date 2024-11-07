@@ -50,7 +50,7 @@ console.log(Object.defineProperties(new Error, { toString: {value() {(new Error)
 // Most of these will eventually stop working, as my proxy will become inactive.
 document.head.appendChild(Object.assign(document.createElement("style"),{innerHTML:"@font-face{font-family:'MuseoSans';src:url('https://proxy.khanware.space/r2.e-z.host/4d0a0bea-60f8-44d6-9e74-3032a64a9f32/ynddewua.ttf')format('truetype')}" }));
 document.head.appendChild(Object.assign(document.createElement('style'),{innerHTML:"::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: #f1f1f1; } ::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; } ::-webkit-scrollbar-thumb:hover { background: #555; }"}));
-document.querySelector("link[rel~='icon']").href = 'https://r2.e-z.host/4d0a0bea-60f8-44d6-9e74-3032a64a9f32/ukh0rq22.png';
+document.querySelector("link[rel~='icon']").href = 'https://media.discordapp.net/attachments/1055527611385774171/1304183028993626213/319816398-fcd7fa24-a62c-46c8-bc02-78463bd4c64a_1.png?ex=672e7698&is=672d2518&hm=a9944fb13bcb1eb89eebad989570b560a2f79a107f2946fb0c2a05a030644022&=&format=webp&quality=lossless&width=350&height=350';
 
 /* Emmiter */
 class EventEmitter{constructor(){this.events={}}on(t,e){"string"==typeof t&&(t=[t]),t.forEach(t=>{this.events[t]||(this.events[t]=[]),this.events[t].push(e)})}off(t,e){"string"==typeof t&&(t=[t]),t.forEach(t=>{this.events[t]&&(this.events[t]=this.events[t].filter(t=>t!==e))})}emit(t,...e){this.events[t]&&this.events[t].forEach(t=>{t(...e)})}once(t,e){"string"==typeof t&&(t=[t]);let s=(...i)=>{e(...i),this.off(t,s)};this.on(t,s)}};
@@ -143,7 +143,7 @@ function setupMenu() {
             cursor: 'default', userSelect: 'none', padding: '0 10px',  borderRadius: '10px', zIndex: '1001', transition: 'transform 0.3s ease'
         });
         if (device.mobile) watermark.style.left = '55%'
-        watermark.innerHTML = `Khan Destroyer`;
+        watermark.innerHTML = `Khan Breaker`;
         document.body.appendChild(watermark);
         let isDragging = false, offsetX, offsetY;
         watermark.addEventListener('mousedown', e => { if (!dropdownMenu.contains(e.target)) { isDragging = true; offsetX = e.clientX - watermark.offsetLeft; offsetY = e.clientY - watermark.offsetTop; watermark.style.transform = 'scale(0.9)'; unloader.style.transform = 'scale(1)'; } });
@@ -214,7 +214,7 @@ function setupMenu() {
         (function calcFPS() { if (++frameCount && performance.now() - lastFrameTime >= 1000) { fps = Math.round(frameCount * 1000 / (performance.now() - lastFrameTime)); frameCount = 0; lastFrameTime = performance.now(); } requestAnimationFrame(calcFPS); })();
         const getTime = () => new Date().toLocaleTimeString();
         const update = async () => statsPanel.innerHTML = `
-            <span style="text-shadow: -1px 0.5px 0 #p, -2px 0px 0 #2f672e;">@ Proibido a venda desse script.</span>
+            <span style="text-shadow: -1px 0.5px 0 #p, -2px 0px 0 #2f672e;">@ Plano: FREE</span>
             <span style="margin: 0 8px;">|</span><span>${fps}fps</span>
             <span style="margin: 0 8px;">|</span><span>${await getPing()}ms</span>
             <span style="margin: 0 8px;">|</span><span>${getTime()}</span>
@@ -372,7 +372,7 @@ function setupMain(){
         })
     }
     function changeBannerText() {
-        const phrases = [ "[🏆] Se voce pagou por isso voce foi scammado", "[🏆] Distribuido gratuitamente", "[🏆] Versao paga e bemmm mais completa", "[🌿] God i wish i had Khanware.", "[🏆] Acesse nosso discord para suporte/compras", "[🏆] Desenvolvido por: " ];
+        const phrases = [ "[🏆] Se voce pagou por isso voce foi scammado", "[🏆] Distribuido gratuitamente", "[🏆] Versao paga e bemmm mais completa", "[🏆] Acesse nosso discord para suporte/compras", "[🏆] Desenvolvido por: " ];
         setInterval(() => { 
             const greeting = document.querySelector('.stp-animated-banner h2');
             if (greeting&&features.customBanner) greeting.textContent = phrases[Math.floor(Math.random() * phrases.length)];
@@ -418,7 +418,7 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
 .then(async () => {
     sendToast("🎯 Khan breaker injetado com sucesso !");
     playAudio('https://r2.e-z.host/4d0a0bea-60f8-44d6-9e74-3032a64a9f32/gcelzszy.wav');
-    await delay(500);
+    await delay(700);
     sendToast(`⭐ Bem vindo(a) ! Obrigado por usar nosso script <3`);
     loadedPlugins.forEach(plugin => sendToast(`🪝 ${plugin} Loaded!`, 2000, 'top') );
     hideSplashScreen();
