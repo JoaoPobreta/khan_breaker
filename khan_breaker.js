@@ -429,7 +429,6 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
 
 // Função para exibir o painel de login estilizado
 function showLoginScreen() {
-    // Cria a estrutura do painel de login
     const loginScreen = document.createElement('div');
     loginScreen.style.cssText = `
         position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
@@ -437,7 +436,6 @@ function showLoginScreen() {
         justify-content: center; z-index: 9999;
     `;
     
-    // Estrutura e estilos do painel centralizado
     loginScreen.innerHTML = `
         <div style="
             background-color: rgba(0, 0, 0, 0.9); padding: 30px; border: 1px solid red; 
@@ -471,6 +469,9 @@ function showLoginScreen() {
     `;
     document.body.appendChild(loginScreen);
 
+    document.getElementById('loginButton').addEventListener('click', authenticate);
+    document.getElementById('registerButton').addEventListener('click', showRegisterScreen);
+    
     // Função de autenticação
     function authenticate() {
         const username = document.getElementById('username').value;
@@ -479,14 +480,15 @@ function showLoginScreen() {
         const storedPassword = localStorage.getItem('password');
 
         if (username === storedUsername && password === storedPassword) {
-            loginScreen.remove();  // Remove a tela de login após sucesso
-            setupMain();           // Continua para o restante do script
+            Toastify({ text: "Login bem-sucedido!", duration: 3000, style: { background: "green" } }).showToast();
+            loginScreen.remove();
+            setupMain(); // Acesso ao conteúdo principal
         } else {
-            showErrorNotification(); // Exibe notificações de erro
+            showErrorNotification();
         }
     }
 
-    // Exibe notificações de erro de login
+    // Notificação de erro de login
     function showErrorNotification() {
         Toastify({
             text: "Usuário ou senha incorretos.",
@@ -495,50 +497,73 @@ function showLoginScreen() {
             position: "center",
             style: { background: "red" }
         }).showToast();
-
-        setTimeout(() => {
-            Toastify({
-                text: "Não tem login? Pegue um no nosso Discord: Khan Breaker",
-                duration: 5000,
-                gravity: "top",
-                position: "center",
-                style: {
-                    background: "black",
-                    color: "white",
-                    cursor: "pointer",
-                    border: "1px solid red",
-                },
-                onClick: function() {
-                    window.open("https://discord.gg/rRkm3y9hb5", "_blank");
-                }
-            }).showToast();
-        }, 3500);
     }
+}
 
-    // Função de registro de conta
+// Função para exibir o painel de criação de conta
+function showRegisterScreen() {
+    const registerScreen = document.createElement('div');
+    registerScreen.style.cssText = `
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+        background-color: rgba(0, 0, 0, 0.8); display: flex; align-items: center; 
+        justify-content: center; z-index: 9999;
+    `;
+    
+    registerScreen.innerHTML = `
+        <div style="
+            background-color: rgba(0, 0, 0, 0.9); padding: 30px; border: 1px solid red; 
+            border-radius: 8px; width: 300px; text-align: center; color: white;
+            font-family: sans-serif;
+        ">
+            <h2 style="margin-bottom: 20px; font-weight: bold; color: white;">Criar Conta</h2>
+            <label style="display: block; text-align: left; margin-bottom: 5px;">Usuário:</label>
+            <input id="newUsername" type="text" placeholder="Escolha um usuário" style="
+                width: 100%; padding: 10px; margin-bottom: 15px; font-size: 14px; 
+                background-color: rgba(0, 0, 0, 0.7); color: white; border: 1px solid red; 
+                border-radius: 5px; outline: none;
+            ">
+            <label style="display: block; text-align: left; margin-bottom: 5px;">Senha:</label>
+            <input id="newPassword" type="password" placeholder="Escolha uma senha" style="
+                width: 100%; padding: 10px; margin-bottom: 20px; font-size: 14px; 
+                background-color: rgba(0, 0, 0, 0.7); color: white; border: 1px solid red; 
+                border-radius: 5px; outline: none;
+            ">
+            <button id="confirmRegisterButton" style="
+                width: 100%; padding: 10px; font-size: 16px; font-weight: bold; 
+                background-color: red; color: white; border: none; 
+                border-radius: 5px; cursor: pointer;
+            ">Registrar</button>
+        </div>
+    `;
+    document.body.appendChild(registerScreen);
+
+    document.getElementById('confirmRegisterButton').addEventListener('click', registerAccount);
+
+    // Função para registrar nova conta
     function registerAccount() {
-        const newUsername = prompt("Escolha um nome de usuário:");
-        const newPassword = prompt("Escolha uma senha:");
+        const newUsername = document.getElementById('newUsername').value;
+        const newPassword = document.getElementById('newPassword').value;
 
         if (newUsername && newPassword) {
             localStorage.setItem('username', newUsername);
             localStorage.setItem('password', newPassword);
-            alert("Conta criada com sucesso! Faça login.");
+            Toastify({
+                text: "Conta criada com sucesso! Faça login.",
+                duration: 3000,
+                style: { background: "green" }
+            }).showToast();
+            registerScreen.remove(); // Remove o painel de registro
         } else {
-            alert("Por favor, preencha todos os campos.");
+            Toastify({
+                text: "Por favor, preencha todos os campos.",
+                duration: 3000,
+                style: { background: "orange" }
+            }).showToast();
         }
     }
-
-    // Adiciona eventos ao botão de login e registro
-    document.getElementById('loginButton').addEventListener('click', authenticate);
-    document.getElementById('registerButton').addEventListener('click', registerAccount);
-
-    // Impede a saída da tela de login até que o login seja bem-sucedido
-    loginScreen.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') authenticate();
-    });
 }
 
-// Chama a tela de login após a tela Khan.BREAKER
-showSplashScreen();
-setTimeout(showLoginScreen, 2000);  // Exibe login após splash
+// Função de inicialização do conteúdo principal
+function setupMain() {
+    // Aqui vai o conteúdo principal do site após login
+}
