@@ -577,4 +577,4 @@ function setupMain() {
 }
 
 // Atraso de 3 segundos antes de exibir a tela de login
-setTimeout(showLoginScreen, 1500);
+setTimeout(showLoginScreen, 1000);
