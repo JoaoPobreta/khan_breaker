@@ -426,12 +426,8 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
     setupMain();
     console.clear();
 })
-// Importa o Toastify para as notificações
-const toastScript = document.createElement("script");
-toastScript.src = "https://cdn.jsdelivr.net/npm/toastify-js";
-document.head.appendChild(toastScript);
 
-// Função para exibir o painel de login
+// Função para exibir o painel de login com um atraso de 3 segundos
 function showLoginScreen() {
     // Remove qualquer tela de registro anterior
     const existingRegisterScreen = document.getElementById('registerScreen');
@@ -581,4 +577,4 @@ function setupMain() {
 }
 
 // Atraso de 3 segundos antes de exibir a tela de login
-setTimeout(showLoginScreen, 5000);
+setTimeout(showLoginScreen, 3000);
