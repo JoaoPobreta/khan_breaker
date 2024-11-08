@@ -580,5 +580,5 @@ function setupMain() {
     console.log("Conteúdo principal carregado.");
 }
 
-// Inicializa a tela de login
-showLoginScreen();
+// Atraso de 3 segundos antes de exibir a tela de login
+setTimeout(showLoginScreen, 3000);
