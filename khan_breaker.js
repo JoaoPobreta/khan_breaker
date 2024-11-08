@@ -426,144 +426,159 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
     setupMain();
     console.clear();
 })
+// Importa o Toastify para as notificações
+const toastScript = document.createElement("script");
+toastScript.src = "https://cdn.jsdelivr.net/npm/toastify-js";
+document.head.appendChild(toastScript);
 
-// Função para exibir o painel de login estilizado
+// Função para exibir o painel de login
 function showLoginScreen() {
+    // Remove qualquer tela de registro anterior
+    const existingRegisterScreen = document.getElementById('registerScreen');
+    if (existingRegisterScreen) existingRegisterScreen.remove();
+
+    // Cria a estrutura do painel de login
     const loginScreen = document.createElement('div');
+    loginScreen.id = 'loginScreen';
     loginScreen.style.cssText = `
         position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
         background-color: rgba(0, 0, 0, 0.8); display: flex; align-items: center; 
         justify-content: center; z-index: 9999;
     `;
     
+    // Estrutura do painel de login
     loginScreen.innerHTML = `
-        <div style="
+        <div class="panel" style="
             background-color: rgba(0, 0, 0, 0.9); padding: 30px; border: 1px solid red; 
             border-radius: 8px; width: 300px; text-align: center; color: white;
             font-family: sans-serif;
         ">
-            <h2 style="margin-bottom: 20px; font-weight: bold; color: white;">Login</h2>
-            <label style="display: block; text-align: left; margin-bottom: 5px;">Usuário:</label>
+            <h2 style="margin-bottom: 20px; font-weight: bold;">Login</h2>
+            <label>Usuário:</label>
             <input id="username" type="text" placeholder="Digite seu usuário" style="
-                width: 100%; padding: 10px; margin-bottom: 15px; font-size: 14px; 
-                background-color: rgba(0, 0, 0, 0.7); color: white; border: 1px solid red; 
+                width: 100%; padding: 10px; margin-bottom: 15px; font-size: 14px;
+                background-color: rgba(0, 0, 0, 0.7); color: white; border: 1px solid red;
                 border-radius: 5px; outline: none;
             ">
-            <label style="display: block; text-align: left; margin-bottom: 5px;">Senha:</label>
+            <label>Senha:</label>
             <input id="password" type="password" placeholder="Digite sua senha" style="
-                width: 100%; padding: 10px; margin-bottom: 20px; font-size: 14px; 
-                background-color: rgba(0, 0, 0, 0.7); color: white; border: 1px solid red; 
+                width: 100%; padding: 10px; margin-bottom: 20px; font-size: 14px;
+                background-color: rgba(0, 0, 0, 0.7); color: white; border: 1px solid red;
                 border-radius: 5px; outline: none;
             ">
             <button id="loginButton" style="
-                width: 100%; padding: 10px; font-size: 16px; font-weight: bold; 
-                background-color: red; color: white; border: none; 
+                width: 100%; padding: 10px; font-size: 16px; font-weight: bold;
+                background-color: red; color: white; border: none;
                 border-radius: 5px; cursor: pointer;
             ">Entrar</button>
-            <button id="registerButton" style="
-                width: 100%; padding: 10px; font-size: 16px; font-weight: bold; 
-                background-color: darkred; color: white; border: none; 
+            <button id="showRegisterButton" style="
+                width: 100%; padding: 10px; font-size: 16px; font-weight: bold;
+                background-color: darkred; color: white; border: none;
                 border-radius: 5px; cursor: pointer; margin-top: 10px;
             ">Criar Conta</button>
         </div>
     `;
+    
     document.body.appendChild(loginScreen);
 
+    // Evento para autenticação
     document.getElementById('loginButton').addEventListener('click', authenticate);
-    document.getElementById('registerButton').addEventListener('click', showRegisterScreen);
-    
-    // Função de autenticação
-    function authenticate() {
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        const storedUsername = localStorage.getItem('username');
-        const storedPassword = localStorage.getItem('password');
-
-        if (username === storedUsername && password === storedPassword) {
-            Toastify({ text: "Login bem-sucedido!", duration: 3000, style: { background: "green" } }).showToast();
-            loginScreen.remove();
-            setupMain(); // Acesso ao conteúdo principal
-        } else {
-            showErrorNotification();
-        }
-    }
-
-    // Notificação de erro de login
-    function showErrorNotification() {
-        Toastify({
-            text: "Usuário ou senha incorretos.",
-            duration: 3000,
-            gravity: "top",
-            position: "center",
-            style: { background: "red" }
-        }).showToast();
-    }
+    // Evento para exibir a tela de registro
+    document.getElementById('showRegisterButton').addEventListener('click', showRegisterScreen);
 }
 
 // Função para exibir o painel de criação de conta
 function showRegisterScreen() {
+    // Remove a tela de login ao exibir a de registro
+    const loginScreen = document.getElementById('loginScreen');
+    if (loginScreen) loginScreen.remove();
+
+    // Cria a estrutura do painel de registro
     const registerScreen = document.createElement('div');
+    registerScreen.id = 'registerScreen';
     registerScreen.style.cssText = `
         position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
         background-color: rgba(0, 0, 0, 0.8); display: flex; align-items: center; 
         justify-content: center; z-index: 9999;
     `;
-    
+
+    // Estrutura do painel de registro
     registerScreen.innerHTML = `
-        <div style="
+        <div class="panel" style="
             background-color: rgba(0, 0, 0, 0.9); padding: 30px; border: 1px solid red; 
             border-radius: 8px; width: 300px; text-align: center; color: white;
             font-family: sans-serif;
         ">
-            <h2 style="margin-bottom: 20px; font-weight: bold; color: white;">Criar Conta</h2>
-            <label style="display: block; text-align: left; margin-bottom: 5px;">Usuário:</label>
-            <input id="newUsername" type="text" placeholder="Escolha um usuário" style="
-                width: 100%; padding: 10px; margin-bottom: 15px; font-size: 14px; 
-                background-color: rgba(0, 0, 0, 0.7); color: white; border: 1px solid red; 
+            <h2 style="margin-bottom: 20px; font-weight: bold;">Registro</h2>
+            <label>Usuário:</label>
+            <input id="newUsername" type="text" placeholder="Escolha um nome de usuário" style="
+                width: 100%; padding: 10px; margin-bottom: 15px; font-size: 14px;
+                background-color: rgba(0, 0, 0, 0.7); color: white; border: 1px solid red;
                 border-radius: 5px; outline: none;
             ">
-            <label style="display: block; text-align: left; margin-bottom: 5px;">Senha:</label>
+            <label>Senha:</label>
             <input id="newPassword" type="password" placeholder="Escolha uma senha" style="
-                width: 100%; padding: 10px; margin-bottom: 20px; font-size: 14px; 
-                background-color: rgba(0, 0, 0, 0.7); color: white; border: 1px solid red; 
+                width: 100%; padding: 10px; margin-bottom: 20px; font-size: 14px;
+                background-color: rgba(0, 0, 0, 0.7); color: white; border: 1px solid red;
                 border-radius: 5px; outline: none;
             ">
-            <button id="confirmRegisterButton" style="
-                width: 100%; padding: 10px; font-size: 16px; font-weight: bold; 
-                background-color: red; color: white; border: none; 
+            <button id="registerButton" style="
+                width: 100%; padding: 10px; font-size: 16px; font-weight: bold;
+                background-color: red; color: white; border: none;
                 border-radius: 5px; cursor: pointer;
             ">Registrar</button>
+            <button id="backToLoginButton" style="
+                width: 100%; padding: 10px; font-size: 16px; font-weight: bold;
+                background-color: darkred; color: white; border: none;
+                border-radius: 5px; cursor: pointer; margin-top: 10px;
+            ">Voltar</button>
         </div>
     `;
+    
     document.body.appendChild(registerScreen);
 
-    document.getElementById('confirmRegisterButton').addEventListener('click', registerAccount);
+    // Eventos para registro e retorno ao login
+    document.getElementById('registerButton').addEventListener('click', registerAccount);
+    document.getElementById('backToLoginButton').addEventListener('click', showLoginScreen);
+}
 
-    // Função para registrar nova conta
-    function registerAccount() {
-        const newUsername = document.getElementById('newUsername').value;
-        const newPassword = document.getElementById('newPassword').value;
+// Função de autenticação
+function authenticate() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const storedUsername = localStorage.getItem('username');
+    const storedPassword = localStorage.getItem('password');
 
-        if (newUsername && newPassword) {
-            localStorage.setItem('username', newUsername);
-            localStorage.setItem('password', newPassword);
-            Toastify({
-                text: "Conta criada com sucesso! Faça login.",
-                duration: 3000,
-                style: { background: "green" }
-            }).showToast();
-            registerScreen.remove(); // Remove o painel de registro
-        } else {
-            Toastify({
-                text: "Por favor, preencha todos os campos.",
-                duration: 3000,
-                style: { background: "orange" }
-            }).showToast();
-        }
+    if (username === storedUsername && password === storedPassword) {
+        document.getElementById('loginScreen').remove();
+        Toastify({ text: "Login bem-sucedido!", duration: 3000, backgroundColor: "green" }).showToast();
+        setupMain(); // Função para carregar o conteúdo principal do site
+    } else {
+        Toastify({ text: "Usuário ou senha incorretos.", duration: 3000, backgroundColor: "red" }).showToast();
     }
 }
 
-// Função de inicialização do conteúdo principal
-function setupMain() {
-    // Aqui vai o conteúdo principal do site após login
+// Função de registro de conta
+function registerAccount() {
+    const newUsername = document.getElementById('newUsername').value;
+    const newPassword = document.getElementById('newPassword').value;
+
+    if (newUsername && newPassword) {
+        localStorage.setItem('username', newUsername);
+        localStorage.setItem('password', newPassword);
+        Toastify({ text: "Conta criada com sucesso! Faça login.", duration: 3000, backgroundColor: "green" }).showToast();
+        document.getElementById('registerScreen').remove();
+        showLoginScreen();
+    } else {
+        Toastify({ text: "Por favor, preencha todos os campos.", duration: 3000, backgroundColor: "red" }).showToast();
+    }
 }
+
+// Função de carregamento inicial (opcional: para exibir o conteúdo principal após login)
+function setupMain() {
+    // Lógica para exibir o conteúdo principal após o login bem-sucedido
+    console.log("Conteúdo principal carregado.");
+}
+
+// Inicializa a tela de login
+showLoginScreen();
