@@ -462,6 +462,11 @@ function showLoginScreen() {
                 background-color: red; color: white; border: none; 
                 border-radius: 5px; cursor: pointer;
             ">Entrar</button>
+            <button id="registerButton" style="
+                width: 100%; padding: 10px; font-size: 16px; font-weight: bold; 
+                background-color: darkred; color: white; border: none; 
+                border-radius: 5px; cursor: pointer; margin-top: 10px;
+            ">Criar Conta</button>
         </div>
     `;
     document.body.appendChild(loginScreen);
@@ -470,7 +475,10 @@ function showLoginScreen() {
     function authenticate() {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-        if (username === "khan" && password === "breaker") {
+        const storedUsername = localStorage.getItem('username');
+        const storedPassword = localStorage.getItem('password');
+
+        if (username === storedUsername && password === storedPassword) {
             loginScreen.remove();  // Remove a tela de login após sucesso
             setupMain();           // Continua para o restante do script
         } else {
@@ -480,18 +488,14 @@ function showLoginScreen() {
 
     // Exibe notificações de erro de login
     function showErrorNotification() {
-        // Notificação de erro de login
         Toastify({
             text: "Usuário ou senha incorretos.",
             duration: 3000,
             gravity: "top",
             position: "center",
-            style: {
-                background: "red",
-            },
+            style: { background: "red" }
         }).showToast();
 
-        // Notificação com link para o Discord
         setTimeout(() => {
             Toastify({
                 text: "Não tem login? Pegue um no nosso Discord: Khan Breaker",
@@ -508,11 +512,26 @@ function showLoginScreen() {
                     window.open("https://discord.gg/rRkm3y9hb5", "_blank");
                 }
             }).showToast();
-        }, 3500); // Exibe a segunda notificação logo após a primeira
+        }, 3500);
     }
 
-    // Adiciona evento ao botão de login
+    // Função de registro de conta
+    function registerAccount() {
+        const newUsername = prompt("Escolha um nome de usuário:");
+        const newPassword = prompt("Escolha uma senha:");
+
+        if (newUsername && newPassword) {
+            localStorage.setItem('username', newUsername);
+            localStorage.setItem('password', newPassword);
+            alert("Conta criada com sucesso! Faça login.");
+        } else {
+            alert("Por favor, preencha todos os campos.");
+        }
+    }
+
+    // Adiciona eventos ao botão de login e registro
     document.getElementById('loginButton').addEventListener('click', authenticate);
+    document.getElementById('registerButton').addEventListener('click', registerAccount);
 
     // Impede a saída da tela de login até que o login seja bem-sucedido
     loginScreen.addEventListener('keydown', function(e) {
